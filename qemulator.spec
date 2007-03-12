@@ -9,9 +9,9 @@ Group:		Applications
 Source0:	http://qemulator.createweb.de/plugins/downloads/dodownload.php?file=%{_realname}-%{version}.tar.gz
 # Source0-md5:	a9ea901b8e1a9c5d5087220bd8b4f3ed
 URL:		http://qemulator.createweb.de/
-Requires:	libglade >= 2.5.0
-Requires:	python >= 2.4.0
-Requires:	python-pygtk >= 2.8.0
+Requires:	libglade2 >= 2.5.0
+Requires:	python-pygtk-gtk >= 2.8.0
+Requires:	python-pygtk-glade >= 2.8.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -84,6 +84,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc README usr/local/share/%{name}/icons/README-icons
 %attr(755,root,root) %{_bindir}/*
 %dir %{_libdir}/%{name}
+%attr(755,root,root) %{_libdir}/%{name}/qemulator.py
 %{_libdir}/%{name}/*
 %{_desktopdir}/%{name}.desktop
 %{_iconsdir}/hicolor/*/*/%{name}.png
@@ -94,4 +95,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_pixmapsdir}/%{name}.svg
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/*.png
-%dir %{_datadir}/%{name}/icons/*.png
+%dir %{_datadir}/%{name}/icons/
+%{_datadir}/%{name}/icons/*.png
