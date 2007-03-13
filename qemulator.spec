@@ -3,9 +3,9 @@ Summary:	GTK2 GUI for qemu
 Summary(pl.UTF-8):	GUI w GTK dla qemu
 Name:		qemulator
 Version:	0.4.5
-Release:	0.1
+Release:	0.9
 License:	GPL v2
-Group:		Applications
+Group:		X11/Applications
 Source0:	http://qemulator.createweb.de/plugins/downloads/dodownload.php?file=%{_realname}-%{version}.tar.gz
 # Source0-md5:	a9ea901b8e1a9c5d5087220bd8b4f3ed
 URL:		http://qemulator.createweb.de/
