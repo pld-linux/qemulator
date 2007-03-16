@@ -84,9 +84,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc README usr/local/share/%{name}/icons/README-icons
 %attr(755,root,root) %{_bindir}/*
 %dir %{_libdir}/%{name}
-%attr(755,root,root) %{_libdir}/%{name}/qemulator.py
-# XXX: dup
-%{_libdir}/%{name}/*
+%attr(755,root,root) %{_libdir}/%{name}/*.py
 %{_desktopdir}/%{name}.desktop
 %{_iconsdir}/hicolor/*/*/%{name}.png
 %{_iconsdir}/hicolor/scalable/apps/%{name}.svg
