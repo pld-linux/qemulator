@@ -85,6 +85,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %dir %{_libdir}/%{name}
 %attr(755,root,root) %{_libdir}/%{name}/*.py
+%{_libdir}/%{name}/%{name}.glade
 %{_desktopdir}/%{name}.desktop
 %{_iconsdir}/hicolor/*/*/%{name}.png
 %{_iconsdir}/hicolor/scalable/apps/%{name}.svg
