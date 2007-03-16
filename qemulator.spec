@@ -9,14 +9,14 @@ Group:		X11/Applications
 Source0:	http://qemulator.createweb.de/plugins/downloads/dodownload.php?file=%{_realname}-%{version}.tar.gz
 # Source0-md5:	a9ea901b8e1a9c5d5087220bd8b4f3ed
 URL:		http://qemulator.createweb.de/
-Requires:	libglade2 >= 2.5.0
-Requires:	python-pygtk-gtk >= 2.8.0
-Requires:	python-pygtk-glade >= 2.8.0
+Requires:	libglade2 >= 1:2.5.0
+Requires:	python-pygtk-glade >= 2:2.8.0
+Requires:	python-pygtk-gtk >= 2:2.8.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Qemulator is a full featured emulation suite for the qemu virtual
-engine, with on demand job control written in python GTK/Glade2.
+engine, with on demand job control written in Python GTK+/Glade2.
 Qemulator provides an easy and fast to use image and device
 management, a "My machines" list and interactive job control.
 
@@ -39,30 +39,30 @@ Main Features:
 
 %description -l pl.UTF-8
 Qemulator to pełnowartościowy pakiet emulacyjny dla wirtualnego
-silnika qemu, z kontrolą zadań na rządzanie napisaną przy pomocy
-pythona w GTK/Glade2. Qemulator dostarcza łatwego i szybkiego w
-użyciu zarządzania urządzeniami, listę "Moich maszyn" oraz
-interaktywną kontrolę zadań.
+silnika qemu, z kontrolą zadań na żądanie. Został napisany w Pythonie
+przy użyciu GTK+/Glade2. Qemulator zapewnia łatwe i szybkie w użyciu
+zarządzanie urządzeniami, listę "Moich maszyn" oraz interaktywną
+kontrolę zadań.
 
 Dostarczony jest wraz z listą wszystkich uruchomionych zadań skąd
-możesz uruchomić panel kontrolny dla każdego zadania i
-przeprowadzić akcje na żądanie. Pełna interakcja dla zamontowanych
+można uruchomić panel kontrolny dla każdego zadania i przeprowadzić
+akcje na żądanie. Zapewnione są: pełna interakcja dla zamontowanych
 wolumenów, urządzeń USB, interakcja z myszką i klawiaturą, zrzuty
-ekrany, przechwytywanie dźwięku i zachowanie/odtwarzanie stanu
-maszyn i otwieranie klienta VNC jest dostarczone.
+ekranu, przechwytywanie dźwięku i zachowanie/odtwarzanie stanu maszyn
+i otwieranie klienta VNC.
 
 Główne Cechy:
-    - Qemulator dostarcza listę wszystkich obrazów qemu w twoim katalogu
-      domyślnym obrazów.
-    - Wszystkie obrazy na twoim dysku twardym mogą być dodane do listy
-      maszyn, zakładek pod zadaną nazwą i ikoną, nawet gdy nie są w
-      domyślnym katalogu albo nie są jeszcze skonfigurowane.
-    - Jest możliwe przechowywanie wszystkich ustawień emulacji dla
-      każdego obrazu. Te ustawienia będą załadowane za każdym razem jak
-      wybierzesz ten obraz do użytku.
-    - Dodatkowe komendy linii poleceń dla własnych opcji qemu. Te
-      dodatkowe opcję będą również przechowywane z twoimi ustawieniami
-      dla tego obrazu.
+ - Qemulator dostarcza listę wszystkich obrazów qemu w katalogu
+   domyślnym obrazów.
+ - Wszystkie obrazy na dysku twardym mogą być dodane do listy maszyn,
+   zakładek pod zadaną nazwą i ikoną, nawet gdy nie są w domyślnym
+   katalogu albo nie są jeszcze skonfigurowane.
+ - Jest możliwe przechowywanie wszystkich ustawień emulacji dla
+   każdego obrazu. Te ustawienia będą załadowane za każdym razem po
+   wybraniu danego obrazu do użytku.
+ - Dodatkowe komendy linii poleceń dla własnych opcji qemu. Te
+   dodatkowe opcję będą również przechowywane wraz z ustawieniami dla
+   danego obrazu.
 
 %prep
 %setup -q -n %{_realname}-%{version}
@@ -85,6 +85,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %dir %{_libdir}/%{name}
 %attr(755,root,root) %{_libdir}/%{name}/qemulator.py
+# XXX: dup
 %{_libdir}/%{name}/*
 %{_desktopdir}/%{name}.desktop
 %{_iconsdir}/hicolor/*/*/%{name}.png
@@ -95,5 +96,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_pixmapsdir}/%{name}.svg
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/*.png
-%dir %{_datadir}/%{name}/icons/
+%dir %{_datadir}/%{name}/icons
 %{_datadir}/%{name}/icons/*.png
