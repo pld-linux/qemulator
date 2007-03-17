@@ -1,0 +1,106 @@
+diff -Nru usr/local/lib/qemulator.orig/qemulator.py usr/local/lib/qemulator/qemulator.py
+--- usr/local/lib/qemulator.orig/qemulator.py	2007-03-03 08:41:28.000000000 +0100
++++ usr/local/lib/qemulator/qemulator.py	2007-03-17 18:24:54.212582250 +0100
+@@ -90,12 +90,12 @@
+ #print "libdir: " + libdir
+ sharedir = basedir + "/share/qemulator"
+ #print "sharedir: " + sharedir
+-pixmapdir = basedir + "/share/pixmaps/qemulator"
++pixmapdir = sharedir
+ #print "pixmapdir: " + pixmapdir     
+ homedir = os.path.expanduser('~/.qemulator')
+ configdir = homedir + "/config"
+ #print "configdir: " + configdir           
+-icondirs = [sharedir + "/icons",homedir + "/icons"] 
++icondirs = [sharedir, homedir + "/icons"] 
+ 
+ ## Import all Qemulator classes 
+ import qml_network
+@@ -144,7 +144,7 @@
+ 
+     def __init__ (self):
+         Thread.__init__(self) 
+-        self.gladefile = libdir + "/qemulator.glade"
++        self.gladefile = sharedir + "/qemulator.glade"
+ 
+     def init_gui(self):
+         logo_file = None
+@@ -209,11 +209,11 @@
+         self.pixmapdir = pixmapdir
+         self.homedir = os.path.expanduser('~/.qemulator')
+         self.configdir = self.homedir + "/config"           
+-        self.icondirs = [self.sharedir + "/icons",self.homedir + "/icons"]
++        self.icondirs = [self.sharedir, self.homedir + "/icons"]
+         self.statefiles_dir = homedir + "/statefiles"
+         self.screenshot_dir = homedir + "/screenshots"
+         self.capture_dir = homedir + "/capture"
+-        self.gladefile = self.libdir + "/qemulator.glade"
++        self.gladefile = self.sharedir + "/qemulator.glade"
+         self.restoreaction = False
+         self.currimage_settings.cdrmedium = ""
+         self.imagespath = ""
+@@ -4370,7 +4370,7 @@
+         self.title = title
+         self. returnfunc = returnfunc
+         self.return_args = ",".join(return_args)
+-        self.gladefile = libdir + "/qemulator.glade" 
++        self.gladefile = sharedir + "/qemulator.glade" 
+         #self.run()  
+         self.init_dialog() 
+ 
+@@ -4444,7 +4444,7 @@
+     def __init__ (self):
+         Thread.__init__(self) 
+         self.traymenu_item = {}
+-        self.gladefile = libdir + "/qemulator.glade"
++        self.gladefile = sharedir + "/qemulator.glade"
+           
+     def run(self):   
+         self.init_tray()
+diff -Nru usr/local/lib/qemulator.orig/qml_configuration.py usr/local/lib/qemulator/qml_configuration.py
+--- usr/local/lib/qemulator.orig/qml_configuration.py	2007-03-02 08:49:26.000000000 +0100
++++ usr/local/lib/qemulator/qml_configuration.py	2007-03-17 16:44:34.868396750 +0100
+@@ -72,6 +72,8 @@
+ homedir = os.path.expanduser('~/.qemulator')
+ configdir = homedir + "/config"
+ libdir = basedir + "/lib/qemulator"
++sharedir = basedir + "/share/qemulator"
++
+ class Configuration:
+     def __init__(self, callback_func=None):
+         self.settings_autoshow = True
+@@ -115,7 +117,7 @@
+         if self.settings.has_key("controlmon_autostart"):        
+             self.settings_controlmon_autostart = self.settings["controlmon_autostart"]
+                 
+-        self.gladefile = libdir + "/qemulator.glade"
++        self.gladefile = sharedir + "/qemulator.glade"
+         self.dialog_settings = gtk.glade.XML(self.gladefile, "dialog_settings", APP)
+         
+         self.treeview_cdromdrives = self.dialog_settings.get_widget("treeview_cdromdrives")
+@@ -533,4 +535,4 @@
+     except:
+         outdata  = { }
+         print "no config file"
+-        return outdata               
+\ No newline at end of file
++        return outdata               
+diff -Nru usr/local/lib/qemulator.orig/qml_controlmon.py usr/local/lib/qemulator/qml_controlmon.py
+--- usr/local/lib/qemulator.orig/qml_controlmon.py	2007-03-07 10:16:21.000000000 +0100
++++ usr/local/lib/qemulator/qml_controlmon.py	2007-03-17 16:48:20.106473250 +0100
+@@ -149,7 +149,7 @@
+ 		self.configdir = self.homedir + "/config"
+ 		print "configdir: " + self.configdir		   
+ 					
+-		self.gladefile = self.libdir + "/qemulator.glade"
++		self.gladefile = self.sharedir + "/qemulator.glade"
+ 	
+ 	def run(self):
+ 		self.preload_gui()	
+@@ -1466,4 +1466,4 @@
+     	else:
+     		return data 
+ 
+-        									   
+\ No newline at end of file
++        									   
