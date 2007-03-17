@@ -14,7 +14,6 @@ Requires:	libglade2 >= 1:2.5.0
 Requires:	python-pygtk-glade >= 2:2.8.0
 Requires:	python-pygtk-gtk >= 2:2.8.0
 Requires:	python-pycairo
-BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
