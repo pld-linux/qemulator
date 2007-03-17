@@ -1,3 +1,7 @@
+#TODO:
+# - Compress qml_*.py modules
+# - Cleanup the mess in %files and %install
+# - 'cp' -> 'install'
 %define		_realname   Qemulator
 Summary:	GTK2 GUI for qemu
 Summary(pl.UTF-8):	GUI w GTK dla qemu
