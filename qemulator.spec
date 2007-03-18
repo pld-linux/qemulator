@@ -96,7 +96,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{_realname}.lang
 %defattr(644,root,root,755)
 %doc README usr/local/share/%{name}/icons/README-icons
-%{_bindir}/*
+%attr(755,root,root) %{_bindir}/*
 %dir %{_libdir}/%{name}
 %attr(755,root,root) %{_libdir}/%{name}/*.py
 %{_desktopdir}/%{name}.desktop
