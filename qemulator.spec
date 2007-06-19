@@ -1,23 +1,24 @@
 #TODO:
 # - Compress qml_*.py modules
-# - Cleanup the mess in %files and %install
+# - Cleanup the mess in %%files and %%install
 # - 'cp' -> 'install'
+
 %define		_realname   Qemulator
 Summary:	GTK2 GUI for qemu
-Summary(pl.UTF-8):	GUI w GTK dla qemu
+Summary(pl.UTF-8): GUI w GTK dla qemu
 Name:		qemulator
-Version:	0.4.5
-Release:	0.10
+Version:	0.5
+Release:	0.1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://qemulator.createweb.de/plugins/downloads/dodownload.php?file=%{_realname}-%{version}.tar.gz
-# Source0-md5:	a9ea901b8e1a9c5d5087220bd8b4f3ed
-Patch0:		qemulator-pldpaths.patch
+# Source0-md5:	a2ab585f2a987b5fafa5f76b785d6c1a
+Patch0:		%{name}-pldpaths.patch
 URL:		http://qemulator.createweb.de/
 Requires:	libglade2 >= 1:2.5.0
+Requires:	python-pycairo
 Requires:	python-pygtk-glade >= 2:2.8.0
 Requires:	python-pygtk-gtk >= 2:2.8.0
-Requires:	python-pycairo
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -45,17 +46,17 @@ Main Features:
 
 %description -l pl.UTF-8
 Qemulator to pełnowartościowy pakiet emulacyjny dla wirtualnego
-silnika qemu, z kontrolą zadań na żądanie. Został napisany w Pythonie
-przy użyciu GTK+/Glade2. Qemulator zapewnia łatwe i szybkie w użyciu
-zarządzanie urządzeniami, listę "Moich maszyn" oraz interaktywną
-kontrolę zadań.
+silnika qemu, z kontrolą zadań na żądanie. Został napisany w
+Pythonie przy użyciu GTK+/Glade2. Qemulator zapewnia łatwe i szybkie
+w użyciu zarządzanie urządzeniami, listę "Moich maszyn" oraz
+interaktywną kontrolę zadań.
 
 Dostarczony jest wraz z listą wszystkich uruchomionych zadań skąd
-można uruchomić panel kontrolny dla każdego zadania i przeprowadzić
-akcje na żądanie. Zapewnione są: pełna interakcja dla zamontowanych
-wolumenów, urządzeń USB, interakcja z myszką i klawiaturą, zrzuty
-ekranu, przechwytywanie dźwięku i zachowanie/odtwarzanie stanu maszyn
-i otwieranie klienta VNC.
+można uruchomić panel kontrolny dla każdego zadania i
+przeprowadzić akcje na żądanie. Zapewnione są: pełna interakcja
+dla zamontowanych wolumenów, urządzeń USB, interakcja z myszką i
+klawiaturą, zrzuty ekranu, przechwytywanie dźwięku i
+zachowanie/odtwarzanie stanu maszyn i otwieranie klienta VNC.
 
 Główne Cechy:
  - Qemulator dostarcza listę wszystkich obrazów qemu w katalogu
@@ -67,12 +68,12 @@ Główne Cechy:
    każdego obrazu. Te ustawienia będą załadowane za każdym razem po
    wybraniu danego obrazu do użytku.
  - Dodatkowe komendy linii poleceń dla własnych opcji qemu. Te
-   dodatkowe opcję będą również przechowywane wraz z ustawieniami dla
-   danego obrazu.
+   dodatkowe opcję będą również przechowywane wraz z ustawieniami
+   dla danego obrazu.
 
 %prep
 %setup -q -n %{_realname}-%{version}
-%patch0 -p0
+%patch0 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT
